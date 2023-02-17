@@ -1,0 +1,18 @@
+about us , handbook page r footer ko kam vyaye .
+
+
+This code generates the best possible timetable for a school. It is a function called generate that takes several parameters, such as instances (an array of courses with their details), givenSlots (an array of integers representing the number of slots available for each day), teachers (an array of teachers), and sections (an array of class sections).
+
+The generate function first creates some initial data structures to keep track of the timetable. It creates two dictionaries, secInstances and teacherTT, which will store the instances for each section and the timetable for each teacher, respectively. It also creates an array TT that will store the final timetable.
+
+The function then goes through each section and creates a new timetable for it. For each section, the function first creates a new array called currentTT that represents the current timetable for that section. It also creates a new array called regenerateListSI that will store information about any slots that need to be regenerated (more on this later).
+
+The function then goes through each instance for the current section and tries to assign it to a slot in the timetable. For each instance, it first creates an array called availSlots that represents the available slots for that instance. It does this by iterating through each day and each slot and checking if that day and slot are available. If a slot is available, it is added to the daySlots array. Once all the available slots have been found, the daySlots array is added to the availSlots array.
+
+Once the availSlots array has been created, the function uses a function called ranD to select a random slot from the available slots. The ranD function takes two parameters, slots and count. The slots parameter is an array of available slots for a given day, and the count parameter is the number of slots needed for the current instance. The ranD function first finds all the days that have enough slots for the instance, then selects a random day from those viable days. It then selects the required number of slots from the available slots for that day and removes them from the slots array. Finally, it returns an object with the selected day and slots.
+
+Once the ranD function returns the selected day and slots, the function updates the currentTT, teacherTT, and secTT arrays to reflect the assigned instance. It also sets the regenerateFlagSI to true if the assigned slots overlap with any previously assigned slots. If regenerateFlagSI is true, then the function sets regenerateListSI to the day and slots that need to be regenerated.
+
+If a section is not possible to schedule, the function logs "Table Not Possible" to the console and stops.
+
+Once all sections have been scheduled, the TT array is returned, which represents the final timetable.
